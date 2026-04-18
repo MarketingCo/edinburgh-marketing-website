@@ -1,0 +1,1 @@
+---\nname: "The Shore"\ndescription: "Scaling high-performance brands in The Shore through elite digital strategy and market domination."\n---

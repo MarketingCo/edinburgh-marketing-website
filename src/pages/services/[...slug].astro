@@ -1,0 +1,105 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+	const services = await getCollection('services');
+	return services.map((service) => ({
+		params: { slug: service.id },
+		props: service,
+	}));
+}
+
+const service = Astro.props;
+const { Content } = await render(service);
+
+// Deep Internal Linking: Find case studies related to this service
+const relatedCaseStudies = (await getCollection('case-studies'))
+	.filter(study => study.data.title.toLowerCase().includes(service.data.title.split(' ')[0].toLowerCase()))
+	.slice(0, 2);
+---
+
+<Layout title={service.data.title} description={service.data.description}>
+	<section class="py-32 bg-slate-50 relative overflow-hidden">
+		<!-- Background Elements -->
+		<div class="absolute inset-0 z-0">
+			<div class="absolute top-0 -left-4 w-96 h-96 bg-[#6B4C9A] rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-blob"></div>
+			<div class="absolute top-0 -right-4 w-96 h-96 bg-[#0A192F] rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-blob animation-delay-2000"></div>
+		</div>
+
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+				<div>
+					<a href="/#services" class="text-[#6B4C9A] font-bold inline-flex items-center mb-12 hover:underline">
+						<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+						Back to All Services
+					</a>
+					<h1 class="text-5xl lg:text-7xl font-black text-[#0A192F] mb-8 leading-tight">{service.data.title}</h1>
+					<p class="text-xl text-gray-500 mb-12 leading-relaxed max-w-lg">{service.data.description}</p>
+					
+					<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+						{service.data.benefits.map((benefit) => (
+							<div class="flex items-center p-6 bg-white rounded-2xl shadow-sm border border-gray-100">
+								<div class="w-10 h-10 bg-[#6B4C9A]/10 rounded-xl flex items-center justify-center mr-4">
+									<svg class="w-5 h-5 text-[#6B4C9A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+								</div>
+								<span class="text-sm font-bold text-[#0A192F]">{benefit}</span>
+							</div>
+						))}
+					</div>
+				</div>
+				<div class="bg-white p-12 rounded-[3rem] shadow-2xl border border-gray-100 relative group">
+					<div class="absolute -top-10 -right-10 w-40 h-40 bg-[#6B4C9A] rounded-full filter blur-[100px] opacity-10 group-hover:opacity-20 transition-opacity"></div>
+					<div class="prose prose-lg prose-slate max-w-none 
+						prose-headings:text-[#0A192F] prose-headings:font-black 
+						prose-p:text-gray-500 prose-p:leading-relaxed 
+						prose-strong:text-[#0A192F] 
+						prose-a:text-[#6B4C9A] prose-a:font-bold hover:prose-a:underline
+						prose-li:text-gray-500">
+						<Content />
+					</div>
+
+					{relatedCaseStudies.length > 0 && (
+						<div class="mt-16 pt-12 border-t border-gray-100">
+							<h4 class="text-xl font-black text-[#0A192F] mb-8 tracking-tight uppercase">Related Success</h4>
+							<div class="grid grid-cols-1 gap-6">
+								{relatedCaseStudies.map(study => (
+									<a href={`/case-studies/${study.id}`} class="group p-6 bg-slate-50 rounded-2xl border border-gray-100 hover:bg-[#0A192F] transition-all">
+										<h5 class="text-lg font-black text-[#0A192F] group-hover:text-white transition-colors mb-1">{study.data.client}</h5>
+										<p class="text-gray-500 group-hover:text-purple-100/60 text-xs italic transition-colors">"{study.data.description}"</p>
+									</a>
+								))}
+							</div>
+						</div>
+					)}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Call to Action Section -->
+	<section class="py-24 bg-[#0A192F] text-center border-t border-white/5">
+		<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+			<h3 class="text-4xl font-black text-white mb-8 leading-tight">Ready to boost your {service.data.title.toLowerCase()} results?</h3>
+			<p class="text-lg text-gray-400 mb-12">We help Edinburgh businesses dominate the digital landscape through proven, high-performance strategies.</p>
+			<a href="/#contact" class="bg-[#6B4C9A] text-white px-10 py-5 rounded-2xl font-black text-lg hover:bg-[#5A3B8A] transition-all inline-block shadow-lg shadow-purple-900/40">
+				Request a Free Audit
+			</a>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	@keyframes blob {
+		0% { transform: translate(0px, 0px) scale(1); }
+		33% { transform: translate(30px, -50px) scale(1.1); }
+		66% { transform: translate(-20px, 20px) scale(0.9); }
+		100% { transform: translate(0px, 0px) scale(1); }
+	}
+	.animate-blob {
+		animation: blob 7s infinite;
+	}
+	.animation-delay-2000 {
+		animation-delay: 2s;
+	}
+</style>

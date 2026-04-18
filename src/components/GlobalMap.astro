@@ -1,0 +1,74 @@
+---
+---
+<div class="relative bg-[#0A192F] rounded-[4rem] p-12 lg:p-24 overflow-hidden border border-white/10 shadow-2xl group">
+    <!-- Background Glows -->
+    <div class="absolute top-0 left-0 w-96 h-96 bg-[#6B4C9A] rounded-full filter blur-[120px] opacity-10"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-[#0A192F] rounded-full filter blur-[120px] opacity-20"></div>
+
+    <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        <div>
+            <span class="text-xs font-black text-purple-400 uppercase tracking-[0.4em] mb-6 block">Operational Scale</span>
+            <h3 class="text-4xl lg:text-6xl font-black text-white mb-8 leading-tight">Edinburgh Strategy. <br/><span class="text-[#6B4C9A]">Global Execution.</span></h3>
+            <p class="text-xl text-purple-100/60 mb-12 leading-relaxed">
+                Our model combines high-level Scottish strategy with a global delivery engine. This ensures 24/7 campaign velocity and specialized technical execution that standard local agencies simply cannot match.
+            </p>
+            
+            <div class="space-y-8">
+                <div class="flex items-center space-x-6">
+                    <div class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-[#6B4C9A] border border-white/10">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
+                    </div>
+                    <div>
+                        <span class="text-white font-bold block text-lg">Edinburgh HQ</span>
+                        <span class="text-gray-400 text-sm font-medium uppercase tracking-widest">Strategy & Board-Level Consulting</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <div class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-[#6B4C9A] border border-white/10">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9-9c1.657 0 3 4.03 3 9s-1.343 9-3 9m0-18c-1.657 0-3 4.03-3 9s1.343 9 3 9m-9-9a9 9 0 019-9"></path></svg>
+                    </div>
+                    <div>
+                        <span class="text-white font-bold block text-lg">Global Specialist Hub</span>
+                        <span class="text-gray-400 text-sm font-medium uppercase tracking-widest">24/7 Technical Delivery & Monitoring</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative">
+            <!-- Mock Map SVG -->
+            <svg class="w-full h-auto opacity-20 text-[#6B4C9A]" viewBox="0 0 800 400" fill="none" stroke="currentColor" stroke-width="1">
+                <path d="M150,150 Q200,100 400,200 T700,150" stroke-dasharray="5,5" class="animate-draw"></path>
+                <circle cx="150" cy="150" r="8" fill="white" class="animate-pulse"></circle>
+                <circle cx="700" cy="150" r="8" fill="#6B4C9A" class="animate-pulse"></circle>
+                <!-- Decorative map dots -->
+                <circle cx="100" cy="100" r="2" fill="currentColor"></circle>
+                <circle cx="200" cy="250" r="2" fill="currentColor"></circle>
+                <circle cx="500" cy="100" r="2" fill="currentColor"></circle>
+                <circle cx="600" cy="300" r="2" fill="currentColor"></circle>
+            </svg>
+            
+            <div class="absolute top-[130px] left-[130px] -translate-x-1/2 -translate-y-full">
+                <div class="bg-white px-4 py-2 rounded-xl shadow-xl">
+                    <span class="text-[10px] font-black text-[#0A192F] uppercase tracking-widest">Edinburgh HQ</span>
+                </div>
+            </div>
+            <div class="absolute top-[130px] left-[720px] -translate-x-1/2 -translate-y-full">
+                <div class="bg-[#6B4C9A] px-4 py-2 rounded-xl shadow-xl">
+                    <span class="text-[10px] font-black text-white uppercase tracking-widest">Global Hub</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    @keyframes draw {
+        to { stroke-dashoffset: 0; }
+    }
+    .animate-draw {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: draw 10s linear infinite;
+    }
+</style>

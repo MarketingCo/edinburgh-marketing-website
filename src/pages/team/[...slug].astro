@@ -1,0 +1,72 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+	const team = await getCollection('team');
+	return team.map((member) => ({
+		params: { slug: member.id },
+		props: member,
+	}));
+}
+
+const member = Astro.props;
+const { Content } = await render(member);
+---
+
+<Layout title={`${member.data.name} | ${member.data.role} at Marketing Company Edinburgh`} description={`${member.data.name} is the ${member.data.role} at Edinburgh's leading marketing agency. Learn more about their expertise and local marketing background.`}>
+	<section class="py-32 bg-slate-50 relative overflow-hidden">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+			<div class="mb-16">
+				<a href="/about" class="text-[#6B4C9A] font-bold inline-flex items-center mb-12 hover:underline">
+					<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+					Back to About
+				</a>
+				<div class="flex items-center space-x-4 mb-8">
+					<span class="text-xs font-black text-[#6B4C9A] uppercase tracking-[0.2em]">Our Leadership</span>
+					<span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+					<span class="text-xs font-black text-gray-400 uppercase tracking-[0.2em]">{member.data.role}</span>
+				</div>
+				<h1 class="text-5xl lg:text-7xl font-black text-[#0A192F] mb-8 leading-tight">{member.data.name}</h1>
+			</div>
+
+			<div class="grid grid-cols-1 lg:grid-cols-3 gap-16 items-start">
+				<div class="lg:col-span-2 bg-white p-12 lg:p-20 rounded-[3.5rem] shadow-2xl border border-gray-100">
+					<div class="prose prose-xl prose-slate max-w-none 
+						prose-headings:text-[#0A192F] prose-headings:font-black 
+						prose-p:text-gray-600 prose-p:leading-relaxed 
+						prose-strong:text-[#0A192F] 
+						prose-a:text-[#6B4C9A] prose-a:font-bold hover:prose-a:underline
+						prose-li:text-gray-600">
+						<Content />
+					</div>
+				</div>
+				<div class="space-y-8">
+					<div class="bg-white p-10 rounded-[2.5rem] shadow-xl border border-gray-100">
+						<h4 class="text-xl font-black text-[#0A192F] mb-6 tracking-tight">Core Expertise</h4>
+						<div class="flex flex-wrap gap-2">
+							{member.data.expertise.map((item) => (
+								<span class="px-4 py-2 bg-slate-50 text-[#0A192F] text-xs font-black uppercase tracking-widest rounded-xl border border-gray-100">{item}</span>
+							))}
+						</div>
+					</div>
+
+					{member.data.linkedin && (
+						<a href={member.data.linkedin} target="_blank" class="flex items-center justify-center space-x-3 bg-[#0A192F] text-white py-5 rounded-2xl font-black hover:bg-[#1A2E4C] transition-all shadow-xl shadow-[#0A192F]/20">
+							<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+							<span>Connect on LinkedIn</span>
+						</a>
+					)}
+
+					<div class="p-10 bg-[#6B4C9A] rounded-[2.5rem] text-white text-center shadow-xl">
+						<h4 class="text-xl font-black mb-4">Start a project with {member.data.name.split(' ')[0]}</h4>
+						<p class="text-purple-100/60 mb-8 text-sm leading-relaxed">Book a strategy session to discuss your Edinburgh business goals.</p>
+						<a href="/contact" class="bg-white text-[#6B4C9A] px-8 py-4 rounded-2xl font-black text-sm hover:bg-slate-50 transition-all inline-block w-full">
+							Schedule Strategy Call
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>

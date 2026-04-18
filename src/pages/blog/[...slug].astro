@@ -1,0 +1,63 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	return posts.map((post) => ({
+		params: { slug: post.id },
+		props: post,
+	}));
+}
+
+const post = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={post.data.title} description={post.data.description}>
+	<article class="py-32">
+		<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="mb-12">
+				<a href="/blog" class="text-[#6B4C9A] font-bold inline-flex items-center mb-12 hover:underline">
+					<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+					Back to Blog
+				</a>
+				<div class="flex items-center space-x-4 mb-8">
+					<span class="text-xs font-bold text-[#6B4C9A] uppercase tracking-[0.2em]">{post.data.pubDate.toLocaleDateString('en-gb', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+					<span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+					<span class="text-xs font-bold text-gray-400 uppercase tracking-[0.2em]">{post.data.author}</span>
+				</div>
+				<h1 class="text-5xl lg:text-6xl font-black text-[#0A192F] mb-8 leading-tight">{post.data.title}</h1>
+				<p class="text-xl text-gray-500 italic leading-relaxed">{post.data.description}</p>
+			</div>
+			
+			<div class="prose prose-xl prose-slate max-w-none 
+				prose-headings:text-[#0A192F] prose-headings:font-black 
+				prose-p:text-gray-600 prose-p:leading-relaxed 
+				prose-strong:text-[#0A192F] 
+				prose-a:text-[#6B4C9A] prose-a:font-bold hover:prose-a:underline
+				prose-li:text-gray-600">
+				<Content />
+			</div>
+			<div class="mt-20 p-12 bg-[#0A192F] rounded-[3rem] text-white relative overflow-hidden group">
+				<div class="absolute -top-10 -right-10 w-32 h-32 bg-[#6B4C9A] rounded-full filter blur-[60px] opacity-20"></div>
+				<h4 class="text-2xl font-black mb-4 relative z-10">Is your business ready to scale?</h4>
+				<p class="text-purple-100/60 mb-8 relative z-10 leading-relaxed">Take our 2-minute diagnostic to discover your growth velocity and local Edinburgh market share.</p>
+				<div class="flex flex-col sm:flex-row gap-4 relative z-10">
+					<a href="/strategy" class="bg-[#6B4C9A] text-white px-8 py-4 rounded-2xl font-black text-sm hover:bg-[#5A3B8A] transition-all text-center">Take the Growth Quiz</a>
+					<a href="/#roi" class="bg-white/10 text-white px-8 py-4 rounded-2xl font-black text-sm hover:bg-white/20 transition-all text-center border border-white/10">Calculate ROI</a>
+				</div>
+			</div>
+		</div>
+	</article>
+
+	<section class="py-24 bg-slate-50 border-t border-gray-100">
+		<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+			<h3 class="text-3xl font-bold text-[#0A192F] mb-6">Need a custom strategy?</h3>
+			<p class="text-lg text-gray-500 mb-10">We help Edinburgh businesses navigate the complex digital landscape with ease.</p>
+			<a href="/#contact" class="bg-[#6B4C9A] text-white px-10 py-5 rounded-2xl font-black text-lg hover:bg-[#5A3B8A] transition-all inline-block shadow-lg hover:shadow-purple-200">
+				Get My Free Audit
+			</a>
+		</div>
+	</section>
+</Layout>

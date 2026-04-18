@@ -1,0 +1,68 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const caseStudies = (await getCollection('case-studies')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<Layout title="Edinburgh Case Studies | Real Marketing Results" description="Explore how we've helped Edinburgh businesses scale through local SEO, PPC, and digital strategy.">
+	<section class="py-32 bg-slate-50">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center mb-24">
+				<h2 class="text-sm font-black text-[#6B4C9A] uppercase tracking-[0.2em] mb-4">Our Portfolio</h2>
+				<h1 class="text-5xl lg:text-7xl font-extrabold text-[#0A192F] mb-6">Edinburgh <span class="text-[#6B4C9A]">Success Stories.</span></h1>
+				<p class="text-xl text-gray-500 max-w-2xl mx-auto">From artisanal bakeries to high-end law firms, we deliver consistent, measurable growth in the capital.</p>
+			</div>
+
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+				{caseStudies.map((study) => (
+					<div class="bg-white p-12 rounded-[3.5rem] shadow-xl shadow-gray-100 border border-gray-50 hover:shadow-2xl transition-all group overflow-hidden relative">
+						<div class="absolute top-0 right-0 p-8">
+							<div class="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center text-[#6B4C9A] group-hover:bg-[#6B4C9A] group-hover:text-white transition-colors">
+								<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+							</div>
+						</div>
+						<div class="relative z-10">
+							<div class="flex items-center space-x-4 mb-8">
+								<span class="px-4 py-1.5 bg-purple-50 text-[#6B4C9A] text-xs font-black uppercase tracking-widest rounded-full">{study.data.industry}</span>
+								<span class="text-gray-300 text-xs font-black">/</span>
+								<span class="text-gray-400 text-xs font-black uppercase tracking-widest">{study.data.pubDate.getFullYear()}</span>
+							</div>
+							<h3 class="text-4xl font-black text-[#0A192F] mb-6 leading-tight group-hover:text-[#6B4C9A] transition-colors">{study.data.client}</h3>
+							<p class="text-xl text-gray-500 mb-10 leading-relaxed italic">"{study.data.description}"</p>
+							
+							<div class="grid grid-cols-2 gap-8 mb-12 py-8 border-y border-gray-100">
+								<div>
+									<span class="text-4xl font-black text-[#0A192F] block mb-1">{study.data.results}</span>
+									<span class="text-gray-400 text-xs font-black uppercase tracking-widest">Growth Achieved</span>
+								</div>
+								<div>
+									<span class="text-4xl font-black text-[#0A192F] block mb-1">6 Months</span>
+									<span class="text-gray-400 text-xs font-black uppercase tracking-widest">Timeframe</span>
+								</div>
+							</div>
+							
+							<a href={`/case-studies/${study.id}/`} class="text-[#0A192F] font-black inline-flex items-center group-hover:text-[#6B4C9A] transition-colors">
+								Read Full Case Study
+								<svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+							</a>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Success Stats -->
+	<section class="py-24 bg-[#0A192F] relative overflow-hidden text-center">
+		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+			<h3 class="text-4xl lg:text-6xl font-black text-white mb-8 leading-tight">Ready to be our next <br/><span class="text-[#6B4C9A]">success story?</span></h3>
+			<p class="text-xl text-gray-400 mb-12">We've helped over 500 Edinburgh businesses scale their digital presence. Your business is next.</p>
+			<a href="/contact" class="bg-[#6B4C9A] text-white px-12 py-6 rounded-2xl font-black text-lg hover:bg-[#5A3B8A] transition-all inline-block shadow-2xl">
+				Initiate Consultation
+			</a>
+		</div>
+	</section>
+</Layout>

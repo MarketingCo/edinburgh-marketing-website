@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<Layout title="Edinburgh Marketing Blog | Expert Insights" description="Stay ahead of the curve with our latest marketing tips, trends, and strategies for Edinburgh businesses.">
+	<section class="py-32 bg-slate-50">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center mb-24">
+				<h2 class="text-sm font-black text-[#6B4C9A] uppercase tracking-[0.2em] mb-4">Our Blog</h2>
+				<h1 class="text-5xl lg:text-7xl font-extrabold text-[#0A192F] mb-6">Marketing Insights for <span class="text-[#6B4C9A]">Edinburgh.</span></h1>
+				<p class="text-xl text-gray-500 max-w-2xl mx-auto">Expert strategies and local advice to help your business thrive in the Scottish capital.</p>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+				{posts.map((post) => (
+					<article class="bg-white rounded-[2.5rem] overflow-hidden shadow-xl shadow-gray-100 border border-gray-50 flex flex-col group hover:scale-[1.02] transition-transform">
+						<div class="aspect-video bg-slate-100 relative overflow-hidden">
+							<div class="absolute inset-0 bg-[#6B4C9A] opacity-0 group-hover:opacity-10 transition-opacity"></div>
+							<!-- Placeholder for images -->
+							<div class="w-full h-full flex items-center justify-center text-gray-300">
+								<svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+							</div>
+						</div>
+						<div class="p-10 flex flex-col flex-grow">
+							<div class="flex items-center space-x-4 mb-6">
+								<span class="text-xs font-bold text-[#6B4C9A] uppercase tracking-widest">{post.data.pubDate.toLocaleDateString('en-gb', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+								<span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+								<span class="text-xs font-bold text-gray-400 uppercase tracking-widest">5 min read</span>
+							</div>
+							<h2 class="text-2xl font-bold text-[#0A192F] mb-4 group-hover:text-[#6B4C9A] transition-colors">{post.data.title}</h2>
+							<p class="text-gray-500 mb-8 flex-grow leading-relaxed">{post.data.description}</p>
+							<a href={`/blog/${post.id}/`} class="text-[#0A192F] font-bold inline-flex items-center group-hover:underline">
+								Read Full Post
+								<svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+							</a>
+						</div>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+</Layout>

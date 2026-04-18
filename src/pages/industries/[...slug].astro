@@ -1,0 +1,91 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+	const industries = await getCollection('industries');
+	return industries.map((industry) => ({
+		params: { slug: industry.id },
+		props: industry,
+	}));
+}
+
+const industry = Astro.props;
+const { Content } = await render(industry);
+
+// Deep Internal Linking: Find services relevant to this industry
+const allServices = await getCollection('services');
+const recommendedServices = allServices.slice(0, 3);
+---
+
+<Layout title={industry.data.title} description={industry.data.description}>
+	<section class="py-32 bg-slate-50 relative overflow-hidden">
+		<!-- Background Elements -->
+		<div class="absolute inset-0 z-0 opacity-10">
+			<svg class="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+				<path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="#6B4C9A" stroke-width="0.1" stroke-dasharray="1,1"></path>
+			</svg>
+		</div>
+
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+				<div>
+					<span class="text-xs font-black text-[#6B4C9A] uppercase tracking-[0.3em] mb-6 block">Industry Specialized</span>
+					<h1 class="text-5xl lg:text-7xl font-black text-[#0A192F] mb-8 leading-tight">{industry.data.title}</h1>
+					<p class="text-xl text-gray-500 mb-12 leading-relaxed max-w-lg">{industry.data.description}</p>
+					
+					<div class="bg-white p-10 rounded-[2.5rem] shadow-xl border border-gray-100 relative group">
+						<div class="absolute -top-10 -right-10 w-24 h-24 bg-[#6B4C9A] rounded-full filter blur-[60px] opacity-10 group-hover:opacity-20 transition-opacity"></div>
+						<span class="text-4xl font-black text-[#6B4C9A] block mb-2">{industry.data.results}</span>
+						<span class="text-gray-400 text-xs font-black uppercase tracking-widest">Average Growth in 6 Months</span>
+					</div>
+				</div>
+				<div class="space-y-12">
+					<div class="relative pl-12">
+						<div class="absolute left-0 top-0 w-8 h-8 bg-[#0A192F] rounded-lg flex items-center justify-center text-white font-bold text-xs">01</div>
+						<h3 class="text-2xl font-black text-[#0A192F] mb-4 tracking-tight">The Challenge</h3>
+						<p class="text-gray-500 leading-relaxed italic">"{industry.data.challenge}"</p>
+					</div>
+					<div class="relative pl-12">
+						<div class="absolute left-0 top-0 w-8 h-8 bg-[#6B4C9A] rounded-lg flex items-center justify-center text-white font-bold text-xs">02</div>
+						<h3 class="text-2xl font-black text-[#0A192F] mb-4 tracking-tight">Our Strategy</h3>
+						<p class="text-gray-500 leading-relaxed italic">"{industry.data.solution}"</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Content Detail Section -->
+	<section class="py-32 bg-white">
+		<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="prose prose-xl prose-slate max-w-none 
+				prose-headings:text-[#0A192F] prose-headings:font-black 
+				prose-p:text-gray-600 prose-p:leading-relaxed 
+				prose-strong:text-[#0A192F] 
+				prose-a:text-[#6B4C9A] prose-a:font-bold hover:prose-a:underline
+				prose-li:text-gray-500">
+				<Content />
+			</div>
+
+			<div class="mt-24 pt-24 border-t border-gray-100">
+				<h4 class="text-2xl font-black text-[#0A192F] mb-12 uppercase tracking-widest text-center">Your Strategic Stack</h4>
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+					{recommendedServices.map(service => (
+						<a href={`/services/${service.id}`} class="p-6 bg-slate-50 rounded-2xl border border-gray-100 hover:border-[#6B4C9A] transition-all group text-center">
+							<h5 class="text-sm font-black text-[#0A192F] group-hover:text-[#6B4C9A] transition-colors uppercase tracking-widest">{service.data.title}</h5>
+						</a>
+					))}
+				</div>
+			</div>
+			
+			<div class="mt-20 p-12 bg-slate-50 rounded-[3rem] border border-gray-100 text-center">
+				<h4 class="text-3xl font-black text-[#0A192F] mb-6">Scale Your Practice in Edinburgh.</h4>
+				<p class="text-lg text-gray-500 mb-10 leading-relaxed">Let's discuss how our specialized approach can work for your business. Book your free strategy session today.</p>
+				<a href="/contact" class="bg-[#6B4C9A] text-white px-10 py-5 rounded-2xl font-black text-lg hover:bg-[#5A3B8A] transition-all inline-block shadow-lg hover:shadow-purple-200">
+					Start My Free Audit
+				</a>
+			</div>
+		</div>
+	</section>
+</Layout>

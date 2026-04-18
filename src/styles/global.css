@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: #0F172A;
+  }
+  
+  p {
+    font-size: 1.125rem;
+    line-height: 1.625;
+    color: #475569;
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .elite-border {
+    border: 1px solid rgba(212, 175, 55, 0.2);
+  }
+
+  .gold-gradient {
+    background: linear-gradient(135deg, #6B4C9A 0%, #5A3B8A 100%);
+  }
+
+  .prestige-card {
+    background-color: #fff;
+    padding: 2.5rem;
+    border: 1px solid #f3f4f6;
+    box-shadow: 0 4px 20px -4px rgba(0,0,0,0.05);
+    transition: all 500ms;
+  }
+  .prestige-card:hover {
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+    transform: translateY(-4px);
+  }
+
+  .nav-link {
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 150ms;
+  }
+  .nav-link:hover {
+    color: #6B4C9A;
+  }
+}

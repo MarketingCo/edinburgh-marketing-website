@@ -1,0 +1,1 @@
+---\nname: "Trinity"\ndescription: "Scaling high-performance brands in Trinity through elite digital strategy and market domination."\n---

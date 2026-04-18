@@ -1,0 +1,56 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+	const locations = await getCollection('locations');
+	return locations.map((location) => ({
+		params: { slug: location.id },
+		props: location,
+	}));
+}
+
+const location = Astro.props;
+const { Content } = await render(location);
+---
+
+<Layout title={location.data.title} description={location.data.description}>
+	<section class="py-32 bg-slate-50 relative overflow-hidden">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+				<div>
+					<span class="text-xs font-black text-[#6B4C9A] uppercase tracking-[0.3em] mb-6 block">Local Expertise: {location.data.neighborhood}</span>
+					<h1 class="text-5xl lg:text-7xl font-black text-[#0A192F] mb-8 leading-tight">{location.data.title}</h1>
+					<p class="text-xl text-gray-500 mb-12 leading-relaxed max-w-lg">{location.data.description}</p>
+					
+					<div class="space-y-4">
+						{location.data.stats.map((stat) => (
+							<div class="flex items-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
+								<div class="w-8 h-8 bg-purple-50 rounded-lg flex items-center justify-center mr-4 text-[#6B4C9A]">
+									<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+								</div>
+								<span class="text-sm font-bold text-[#0A192F]">{stat}</span>
+							</div>
+						))}
+					</div>
+				</div>
+				<div class="bg-white p-12 lg:p-20 rounded-[4rem] shadow-2xl border border-gray-100 relative group">
+					<div class="absolute -top-10 -right-10 w-40 h-40 bg-[#6B4C9A] rounded-full filter blur-[100px] opacity-10"></div>
+					<div class="prose prose-xl prose-slate max-w-none 
+						prose-headings:text-[#0A192F] prose-headings:font-black 
+						prose-p:text-gray-600 prose-p:leading-relaxed 
+						prose-strong:text-[#0A192F] 
+						prose-a:text-[#6B4C9A] prose-a:font-bold hover:prose-a:underline
+						prose-li:text-gray-600">
+						<Content />
+					</div>
+					<div class="mt-12 pt-12 border-t border-gray-100 text-center">
+						<a href="/contact" class="bg-[#0A192F] text-white px-10 py-5 rounded-2xl font-black text-lg hover:bg-[#1A2E4C] transition-all inline-block shadow-lg">
+							Grow My {location.data.neighborhood} Business
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>

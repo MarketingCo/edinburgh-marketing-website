@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import GrowthQuiz from '../components/GrowthQuiz';
+---
+
+<Layout title="Growth Strategy Quiz | Is Your Edinburgh Business Ready to Scale?" description="Take our 2-minute growth readiness quiz to see if your Edinburgh-based business is ready for our 8-figure Growth Engine Partnership.">
+	<section class="py-32 bg-slate-50 relative overflow-hidden min-h-screen flex items-center">
+		<div class="absolute inset-0 z-0">
+			<div class="absolute top-0 -left-4 w-96 h-96 bg-[#6B4C9A] rounded-full mix-blend-multiply filter blur-[150px] opacity-10 animate-blob"></div>
+			<div class="absolute bottom-0 -right-4 w-96 h-96 bg-[#0A192F] rounded-full mix-blend-multiply filter blur-[150px] opacity-10 animate-blob animation-delay-2000"></div>
+		</div>
+
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+			<div class="text-center mb-16">
+				<h2 class="text-sm font-black text-[#6B4C9A] uppercase tracking-[0.4em] mb-6">Strategic Assessment</h2>
+				<h1 class="text-5xl lg:text-7xl font-extrabold text-[#0A192F] leading-tight mb-8">
+					Discover Your <span class="text-[#6B4C9A]">Growth Velocity.</span>
+				</h1>
+				<p class="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
+					Are you ready to dominate the Edinburgh market? This 2-minute diagnostic reveals your biggest growth leaks and your potential for high-scale expansion.
+				</p>
+			</div>
+
+			<GrowthQuiz client:load />
+			
+			<p class="mt-12 text-center text-gray-400 text-xs font-bold uppercase tracking-widest">
+				Your data is 100% confidential and compliant with UK GDPR.
+			</p>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	@keyframes blob {
+		0% { transform: translate(0px, 0px) scale(1); }
+		33% { transform: translate(30px, -50px) scale(1.1); }
+		66% { transform: translate(-20px, 20px) scale(0.9); }
+		100% { transform: translate(0px, 0px) scale(1); }
+	}
+	.animate-blob {
+		animation: blob 7s infinite;
+	}
+	.animation-delay-2000 {
+		animation-delay: 2s;
+	}
+</style>

@@ -1,0 +1,1 @@
+---\nname: "Stockbridge"\ndescription: "Scaling high-performance brands in Stockbridge through elite digital strategy and market domination."\n---

@@ -1,0 +1,175 @@
+---
+import SEO from '../components/SEO.astro';
+import { ClientRouter } from 'astro:transitions';
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<SEO {title} {description} />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+		<noscript>
+			<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+		</noscript>
+		<slot name="head" />
+		<ClientRouter />
+	</head>
+	<body class="bg-[#FAFAFA] text-[#0F172A] font-['Inter',sans-serif] selection:bg-[#6B4C9A] selection:text-white">
+		<nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100" aria-label="Main Navigation">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="flex justify-between h-20 items-center">
+					<div class="flex-shrink-0 flex items-center">
+						<a href="/" class="text-2xl font-bold tracking-tight text-[#0A192F]" aria-label="Marketing Company Home">
+							Marketing<span class="text-[#6B4C9A]">Company.</span>
+						</a>
+					</div>
+					
+					<!-- Desktop Menu -->
+					<div class="hidden lg:flex space-x-8 items-center">
+						<div class="flex items-center space-x-2 px-3 py-1 bg-amber-500/10 text-amber-600 rounded-full border border-amber-500/20 mr-4">
+							<div class="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse"></div>
+							<span class="text-[9px] font-black uppercase tracking-widest">1 Partnership Opening for Q2</span>
+						</div>
+						<a href="/about" class="text-sm font-medium hover:text-[#6B4C9A] transition-colors">About</a>
+						<a href="/enterprise" class="text-sm font-black text-[#6B4C9A] uppercase tracking-widest hover:text-[#5A3B8A] transition-colors">Partnerships</a>
+						<a href="/resources" class="text-sm font-medium hover:text-[#6B4C9A] transition-colors">Resources</a>
+						<a href="/contact" class="text-sm font-medium hover:text-[#6B4C9A] transition-colors">Contact</a>
+						<div class="w-px h-6 bg-gray-200"></div>
+						<a href="/strategy" class="text-xs font-black uppercase tracking-widest text-[#6B4C9A] hover:text-[#0A192F] transition-colors animate-pulse">Growth Quiz</a>
+						<a href="/contact" class="bg-[#0A192F] text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-[#1A2E4C] transition-all shadow-sm active:scale-95 transition-transform" aria-label="Book a Free Audit">Initiate Consultation</a>
+					</div>
+
+					<!-- Mobile Menu Button -->
+					<div class="lg:hidden flex items-center">
+						<button id="mobile-menu-button" class="p-2 text-[#0A192F] focus:outline-none" aria-label="Toggle Mobile Menu">
+							<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+							</svg>
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- Mobile Menu Overlay -->
+			<div id="mobile-menu" class="fixed inset-0 bg-[#0A192F] z-50 translate-x-full transition-transform duration-500 lg:hidden flex flex-col p-8">
+				<div class="flex justify-between items-center mb-16">
+					<span class="text-2xl font-bold text-white">Menu</span>
+					<button id="close-menu" class="text-white p-2">
+						<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+					</button>
+				</div>
+				<div class="flex flex-col space-y-8">
+					<a href="/about" class="text-4xl font-black text-white hover:text-[#6B4C9A] transition-colors">About</a>
+					<a href="/enterprise" class="text-4xl font-black text-[#6B4C9A] uppercase tracking-widest">Partnerships</a>
+					<a href="/resources" class="text-4xl font-black text-white hover:text-[#6B4C9A] transition-colors">Resources</a>
+					<a href="/contact" class="text-4xl font-black text-white hover:text-[#6B4C9A] transition-colors">Contact</a>
+					<div class="h-px w-full bg-white/10 my-4"></div>
+					<a href="/contact" class="bg-[#6B4C9A] text-white py-6 rounded-3xl text-center font-black text-2xl active:scale-95 transition-transform">Initiate Consultation</a>
+				</div>
+			</div>
+		</nav>
+
+		<script is:inline>
+			function setupMenu() {
+				const button = document.getElementById('mobile-menu-button');
+				const close = document.getElementById('close-menu');
+				const menu = document.getElementById('mobile-menu');
+				const links = menu?.querySelectorAll('a');
+
+				button?.onclick = () => {
+					menu?.classList.remove('translate-x-full');
+				};
+
+				close?.onclick = () => {
+					menu?.classList.add('translate-x-full');
+				};
+
+				links?.forEach(link => {
+					link.onclick = () => {
+						menu?.classList.add('translate-x-full');
+					};
+				});
+			}
+
+			// Run on initial load
+			setupMenu();
+			// Re-run on View Transitions
+			document.addEventListener('astro:after-swap', setupMenu);
+		</script>
+
+		<main class="pt-20">
+			<slot />
+		</main>
+
+		<footer class="bg-[#0A192F] text-white py-20">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-gray-800 pb-16">
+					<div class="col-span-1 md:col-span-2">
+						<a href="/" class="text-2xl font-bold tracking-tight mb-6 block">
+							Marketing<span class="text-[#6B4C9A]">Company.</span>
+						</a>
+						<p class="text-gray-400 max-w-sm text-lg leading-relaxed">
+							Since 2011, we've been elevating Edinburgh's local businesses through data-driven digital strategies and creative excellence.
+						</p>
+					</div>
+					<div>
+						<h4 class="font-bold mb-6 text-white uppercase tracking-wider text-xs">Explore</h4>
+						<ul class="space-y-4 text-gray-400">
+							<li><a href="/#services" class="hover:text-white transition-colors">Our Services</a></li>
+							<li><a href="/#about" class="hover:text-white transition-colors">Why Edinburgh?</a></li>
+							<li><a href="/resources" class="hover:text-white transition-colors">Knowledge Hub</a></li>
+							<li><a href="/careers" class="hover:text-white transition-colors">Careers</a></li>
+							<li><a href="/#contact" class="hover:text-white transition-colors">Free Strategy Audit</a></li>
+						</ul>
+					</div>
+					<div>
+						<h4 class="font-bold mb-6 text-white uppercase tracking-wider text-xs">Locations</h4>
+						<ul class="space-y-4 text-gray-400 text-sm">
+							<li><a href="/locations/leith" class="hover:text-white transition-colors">Leith (EH6)</a></li>
+							<li><a href="/locations/stockbridge" class="hover:text-white transition-colors">Stockbridge (EH4)</a></li>
+							<li><a href="/locations/new-town" class="hover:text-white transition-colors">New Town (EH2)</a></li>
+							<li><a href="/contact" class="hover:text-white transition-colors">Morningside (EH10)</a></li>
+						</ul>
+					</div>
+					<div>
+						<h4 class="font-bold mb-6 text-white uppercase tracking-wider text-xs">Stay Updated</h4>
+						<p class="text-gray-400 text-sm mb-6 leading-relaxed">Join 1,200+ business owners receiving our "Edinburgh Marketing Insights" monthly newsletter.</p>
+						<form class="flex flex-col space-y-3">
+							<input type="email" placeholder="Your work email" class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#6B4C9A] transition-all" />
+							<button type="submit" class="bg-[#6B4C9A] text-white py-3 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-[#5A3B8A] transition-all">Subscribe Now</button>
+						</form>
+					</div>
+				</div>
+				<div class="pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
+					<div class="flex items-center space-x-4 mb-4 md:mb-0">
+						<p>© {new Date().getFullYear()} Marketing Company Edinburgh.</p>
+						<div class="flex items-center space-x-2 px-3 py-1 bg-green-500/10 text-green-500 rounded-full border border-green-500/20">
+							<div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+							<span class="text-[10px] font-black uppercase tracking-widest">99/100 Mobile Speed</span>
+						</div>
+					</div>
+					<div class="flex space-x-6 mt-4 md:mt-0">
+						<a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a>
+						<a href="/terms" class="hover:text-white transition-colors">Terms of Service</a>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>
+			</div>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>
