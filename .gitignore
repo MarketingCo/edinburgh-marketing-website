@@ -1,1 +1,8 @@
-node_modules\n.next\nbuild\ndist\nout\n.env*\n.DS_Store\n*.node
+node_modules
+.next
+build
+dist
+out
+.env*
+.DS_Store
+*.node

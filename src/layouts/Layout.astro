@@ -12,19 +12,19 @@ const { title, description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en-GB" class="scroll-smooth">
 	<head>
 		<SEO {title} {description} />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 		<noscript>
-			<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+			<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 		</noscript>
 		<slot name="head" />
 		<ClientRouter />
 	</head>
-	<body class="bg-[#FAFAFA] text-[#0F172A] font-['Inter',sans-serif] selection:bg-[#6B4C9A] selection:text-white">
+	<body class="bg-[#FAFAFA] text-[#0F172A] font-['Inter','system-ui',sans-serif] antialiased selection:bg-[#6B4C9A] selection:text-white">
 		<nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100" aria-label="Main Navigation">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div class="flex justify-between h-20 items-center">
@@ -86,11 +86,11 @@ const { title, description } = Astro.props;
 				const menu = document.getElementById('mobile-menu');
 				const links = menu?.querySelectorAll('a');
 
-				button?.onclick = () => {
+				if (button) button.onclick = () => {
 					menu?.classList.remove('translate-x-full');
 				};
 
-				close?.onclick = () => {
+				if (close) close.onclick = () => {
 					menu?.classList.add('translate-x-full');
 				};
 
@@ -151,23 +151,18 @@ const { title, description } = Astro.props;
 					</div>
 				</div>
 				<div class="pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
-					<div class="flex items-center space-x-4 mb-4 md:mb-0">
+					<div class="flex flex-wrap items-center gap-4 mb-4 md:mb-0">
 						<p>© {new Date().getFullYear()} Marketing Company Edinburgh.</p>
 						<div class="flex items-center space-x-2 px-3 py-1 bg-green-500/10 text-green-500 rounded-full border border-green-500/20">
 							<div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
 							<span class="text-[10px] font-black uppercase tracking-widest">99/100 Mobile Speed</span>
 						</div>
 					</div>
-					<div class="flex space-x-6 mt-4 md:mt-0">
+					<div class="flex flex-wrap items-center gap-x-6 gap-y-2 mt-4 md:mt-0">
 						<a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a>
 						<a href="/terms" class="hover:text-white transition-colors">Terms of Service</a>
+						<span class="text-gray-600 text-xs">Website by Marketing Company</span>
 					</div>
-				</div>
-			</div>
-		</footer>
-	</body>
-</html>
-			</div>
 				</div>
 			</div>
 		</footer>

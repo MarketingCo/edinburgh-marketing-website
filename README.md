@@ -1,43 +1,82 @@
-# Astro Starter Kit: Minimal
+<!-- HERO BANNER: 1280x640, flat, brand colour, product wordmark only. No screenshots. -->
+<p align="center">
+  <img src="./.github/assets/hero.svg" alt="edinburgh-marketing-website" width="720">
+</p>
 
-```sh
-npm create astro@latest -- --template minimal
+<h1 align="center">edinburgh-marketing-website</h1>
+
+<p align="center">
+  <strong>Publish marketing content to attract and convert local clients.</strong>
+</p>
+
+<p align="center">
+  <a href="[TBD]"><img src="[TBD]" alt="Build"></a>
+  <a href="[TBD]"><img src="[TBD]" alt="Version"></a>
+  <a href="[TBD]"><img src="[TBD]" alt="Licence"></a>
+  <a href="[TBD]"><img src="[TBD]" alt="Downloads"></a>
+</p>
+
+<p align="center">
+  <a href="#quick-start">Quick Start</a> ·
+  <a href="#documentation">Documentation</a> ·
+  <a href="#examples">Examples</a> ·
+  <a href="#licence">Licence</a>
+</p>
+
+---
+
+## Overview
+
+This project is an Astro Starter Kit. It provides a minimal web framework template. It is for content-focused site developers.
+
+## Quick Start
+
+```bash
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+A local development server runs on port 4321.
 
-## 🚀 Project Structure
+## Features
 
-Inside of your Astro project, you'll see the following folders and files:
+| Capability | Outcome |
+|---|---|
+| Astro Components | Build static pages with minimal client-side JavaScript. |
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+## Installation
+
+```bash
+npm install
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Requires Node.js [TBD]. Nothing else.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Usage
 
-Any static assets, like images, can be placed in the `public/` directory.
+```bash
+npm run build
+npm start
+```
 
-## 🧞 Commands
+See [Documentation](#documentation) for the full API.
 
-All commands are run from the root of the project, from a terminal:
+## Documentation
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+- [Getting Started]([TBD])
+- [API Reference]([TBD])
+- [Guides]([TBD])
+- [Changelog]([TBD])
 
-## 👀 Want to learn more?
+## Examples
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+| Example | Description |
+|---|---|
+| [`examples/basic`]([TBD]) | [TBD] |
+
+## Contributing
+
+Read [CONTRIBUTING.md]([TBD]) before opening a pull request.
+
+## Licence
+
+[TBD]. See [LICENCE]([TBD]).

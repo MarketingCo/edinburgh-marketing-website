@@ -105,13 +105,13 @@ const caseStudies = (await getCollection('case-studies'))
 							<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
 							<span class="relative inline-flex rounded-full h-2 w-2 bg-[#6B4C9A]"></span>
 						</span>
-						<span>Multi-Sector Market Domination</span>
+						<span>Edinburgh's Premier Digital Marketing Agency</span>
 					</div>
 					<h1 class="text-5xl lg:text-7xl font-extrabold text-[#0A192F] leading-[1.1] tracking-tight mb-8">
-						Market Domination for the <span class="text-[#6B4C9A]">Construction Sector</span>
+						Precision Digital Marketing for <span class="text-[#6B4C9A]">Edinburgh Businesses</span>
 					</h1>
 					<p class="text-xl text-gray-600 mb-10 leading-relaxed max-w-lg">
-						We combine Edinburgh expertise with data-driven engineering to help high-performance businesses dominate the Scottish market.
+						Since 2011, we've combined deep Edinburgh market knowledge with data-driven strategy to help ambitious local businesses dominate search, generate leads, and scale revenue.
 					</p>
 					<div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
 						<a href="#contact" class="bg-[#6B4C9A] text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-[#5A3B8A] transition-all shadow-lg hover:shadow-purple-200 text-center">
@@ -609,7 +609,7 @@ const caseStudies = (await getCollection('case-studies'))
 							</div>
 						</div>
 						<p class="text-xl text-gray-500 mb-10 leading-relaxed italic">"{study.data.description}"</p>
-						<a href="#" class="text-[#0A192F] font-bold inline-flex items-center group-hover:text-[#6B4C9A] transition-colors">
+						<a href={`/case-studies/${study.id}/`} class="text-[#0A192F] font-bold inline-flex items-center group-hover:text-[#6B4C9A] transition-colors">
 							Read Full Case Study
 							<svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
 						</a>
@@ -848,20 +848,3 @@ const caseStudies = (await getCollection('case-studies'))
 	</section>
 </Layout>
 
-<style>
-	@keyframes blob {
-		0% { transform: translate(0px, 0px) scale(1); }
-		33% { transform: translate(30px, -50px) scale(1.1); }
-		66% { transform: translate(-20px, 20px) scale(0.9); }
-		100% { transform: translate(0px, 0px) scale(1); }
-	}
-	.animate-blob {
-		animation: blob 7s infinite;
-	}
-	.animation-delay-2000 {
-		animation-delay: 2s;
-	}
-	.animation-delay-4000 {
-		animation-delay: 4s;
-	}
-</style>

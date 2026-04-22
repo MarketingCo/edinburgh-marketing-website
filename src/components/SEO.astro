@@ -48,21 +48,48 @@ const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
-<!-- Local Business Schema -->
+<!-- Organisation & Local Business Schema -->
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "MarketingAgency",
+    "@type": ["MarketingAgency", "LocalBusiness"],
     "name": "Marketing Company Edinburgh",
     "alternateName": "Edinburgh Marketing Experts",
     "url": "https://marketing-company.co.uk",
-    "logo": "https://marketing-company.co.uk/logo.png",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://marketing-company.co.uk/favicon.svg"
+    },
+    "image": "https://marketing-company.co.uk/og-image.jpg",
+    "telephone": "+441315550000",
+    "priceRange": "££",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "123 Princes Street",
       "addressLocality": "Edinburgh",
       "addressRegion": "Scotland",
+      "postalCode": "EH2 4AD",
       "addressCountry": "GB"
     },
-    "description": "Premier digital marketing agency based in Edinburgh, specializing in SEO, PPC, and localized growth strategies."
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 55.9520,
+      "longitude": -3.1965
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "09:00",
+      "closes": "17:30"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Edinburgh"
+    },
+    "description": "Premier digital marketing agency based in Edinburgh, specialising in SEO, PPC, and localised growth strategies since 2011.",
+    "foundingDate": "2011",
+    "sameAs": [
+      "https://www.linkedin.com/company/marketing-company-edinburgh"
+    ]
   }
 </script>
