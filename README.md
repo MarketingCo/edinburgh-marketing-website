@@ -1,82 +1,18 @@
-<!-- HERO BANNER: 1280x640, flat, brand colour, product wordmark only. No screenshots. -->
-<p align="center">
-  <img src="./.github/assets/hero.svg" alt="edinburgh-marketing-website" width="720">
-</p>
+# Marketing Company Edinburgh
 
-<h1 align="center">edinburgh-marketing-website</h1>
+## Brand Information
+- **Business Name:** Marketing Company Edinburgh
+- **Phone:** 0131 555 0000
+- **Email:** info@marketing-company.co.uk
+- **Address:** 123 Princes Street, Edinburgh, EH2 4AD
+- **Domain:** https://marketing-company.co.uk
+- **Services:** SEO, PPC, digital strategy, web design
+- **USP:** Since 2011, local Edinburgh expertise
 
-<p align="center">
-  <strong>Publish marketing content to attract and convert local clients.</strong>
-</p>
+## Deployment
+Deployed at: https://marketing-company.co.uk
 
-<p align="center">
-  <a href="[TBD]"><img src="[TBD]" alt="Build"></a>
-  <a href="[TBD]"><img src="[TBD]" alt="Version"></a>
-  <a href="[TBD]"><img src="[TBD]" alt="Licence"></a>
-  <a href="[TBD]"><img src="[TBD]" alt="Downloads"></a>
-</p>
-
-<p align="center">
-  <a href="#quick-start">Quick Start</a> ·
-  <a href="#documentation">Documentation</a> ·
-  <a href="#examples">Examples</a> ·
-  <a href="#licence">Licence</a>
-</p>
-
----
-
-## Overview
-
-This project is an Astro Starter Kit. It provides a minimal web framework template. It is for content-focused site developers.
-
-## Quick Start
-
-```bash
-npm run dev
-```
-
-A local development server runs on port 4321.
-
-## Features
-
-| Capability | Outcome |
-|---|---|
-| Astro Components | Build static pages with minimal client-side JavaScript. |
-
-## Installation
-
-```bash
-npm install
-```
-
-Requires Node.js [TBD]. Nothing else.
-
-## Usage
-
-```bash
-npm run build
-npm start
-```
-
-See [Documentation](#documentation) for the full API.
-
-## Documentation
-
-- [Getting Started]([TBD])
-- [API Reference]([TBD])
-- [Guides]([TBD])
-- [Changelog]([TBD])
-
-## Examples
-
-| Example | Description |
-|---|---|
-| [`examples/basic`]([TBD]) | [TBD] |
-
-## Contributing
-
-Read [CONTRIBUTING.md]([TBD]) before opening a pull request.
-
-## Licence
-
-[TBD]. See [LICENCE]([TBD]).
+## Tech Stack
+- Next.js
+- Tailwind CSS
+- Vercel
