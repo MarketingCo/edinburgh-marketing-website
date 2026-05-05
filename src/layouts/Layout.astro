@@ -1,5 +1,6 @@
 ---
 import SEO from '../components/SEO.astro';
+import CookieBanner from '../components/CookieBanner.astro';
 import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 
@@ -159,12 +160,13 @@ const { title, description } = Astro.props;
 						</div>
 					</div>
 					<div class="flex flex-wrap items-center gap-x-6 gap-y-2 mt-4 md:mt-0">
-						<a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a>
+						<a href="/privacy-policy" class="hover:text-white transition-colors">Privacy Policy</a>
 						<a href="/terms" class="hover:text-white transition-colors">Terms of Service</a>
 						<span class="text-gray-600 text-xs">Website by Marketing Company</span>
 					</div>
 				</div>
 			</div>
 		</footer>
+		<CookieBanner />
 	</body>
 </html>
