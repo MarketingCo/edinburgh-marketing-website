@@ -1,5 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /api/
-Disallow: /admin/
-Sitemap: https://marketing-company.co.uk/sitemap-index.xml
+Sitemap: https://edinburghmarketing.co.uk/sitemap.xml

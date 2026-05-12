@@ -1,18 +1,27 @@
-# Marketing Company Edinburgh
+# Edinburgh Marketing Website
 
-## Brand Information
-- **Business Name:** Marketing Company Edinburgh
-- **Phone:** 0131 555 0000
-- **Email:** info@marketing-company.co.uk
-- **Address:** 123 Princes Street, Edinburgh, EH2 4AD
-- **Domain:** https://marketing-company.co.uk
-- **Services:** SEO, PPC, digital strategy, web design
-- **USP:** Since 2011, local Edinburgh expertise
+**Domain:** https://edinburghmarketing.co.uk  
+**Status:** Ready for deployment  
+**Deployed:** Pending Vercel auth
 
 ## Deployment
-Deployed at: https://marketing-company.co.uk
 
-## Tech Stack
-- Next.js
-- Tailwind CSS
-- Vercel
+```bash
+vercel login
+vercel --prod
+```
+
+Or use Rocky:
+
+```bash
+rocky deploy edinburgh-marketing-website
+```
+
+## SEO
+
+- robots.txt: ✅ Generated
+- sitemap.xml: ✅ Generated
+
+## Notes
+
+Managed by Rocky as Iain automation system.
