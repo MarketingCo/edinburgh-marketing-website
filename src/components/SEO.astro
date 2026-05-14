@@ -32,6 +32,8 @@ const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
 <title>{fullTitle}</title>
 <meta name="title" content={fullTitle} />
 <meta name="description" content={description} />
+<meta name="keywords" content="marketing agency Edinburgh, digital marketing Edinburgh, SEO Edinburgh, PPC management Edinburgh, local SEO Scotland, web design Edinburgh" />
+<meta name="robots" content="index, follow" />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={type} />
@@ -42,11 +44,11 @@ const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
 <meta property="og:site_name" content={siteName} />
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:title" content={fullTitle} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={Astro.url} />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={new URL(image, Astro.url)} />
 
 <!-- Organisation & Local Business Schema -->
 <script type="application/ld+json">
@@ -61,21 +63,22 @@ const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
       "url": "https://marketing-company.co.uk/favicon.svg"
     },
     "image": "https://marketing-company.co.uk/og-image.jpg",
-    "telephone": "+441315550000",
     "priceRange": "££",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "123 Princes Street",
-      "addressLocality": "Edinburgh",
-      "addressRegion": "Scotland",
-      "postalCode": "EH2 4AD",
+      "streetAddress": "Unit 2B, Eastfield Industrial Estate",
+      "addressLocality": "Penicuik",
+      "addressRegion": "Midlothian",
+      "postalCode": "EH26 8HA",
       "addressCountry": "GB"
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 55.9520,
-      "longitude": -3.1965
+      "latitude": 55.8520,
+      "longitude": -3.2185
     },
+    "telephone": "+441315550000",
+    "email": "info@marketing-company.co.uk",
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
@@ -86,10 +89,38 @@ const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
       "@type": "City",
       "name": "Edinburgh"
     },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Digital Marketing Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Local SEO Edinburgh",
+            "description": "Dominate Edinburgh search results with tailored local SEO strategies."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Paid Advertising",
+            "description": "High-ROI Google Ads and Meta campaigns targeted to Edinburgh postcodes."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Web Design",
+            "description": "Conversion-focused websites built for Edinburgh businesses."
+          }
+        }
+      ]
+    },
     "description": "Premier digital marketing agency based in Edinburgh, specialising in SEO, PPC, and localised growth strategies since 2011.",
     "foundingDate": "2011",
-    "sameAs": [
-      "https://www.linkedin.com/company/marketing-company-edinburgh"
-    ]
+    "sameAs": []
   }
 </script>

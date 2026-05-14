@@ -1,8 +1,10 @@
-node_modules
+.DS_Store
+.env*
 .next
+.vercel/
+*.node
 build
 dist
+node_modules
 out
-.env*
-.DS_Store
-*.node
+.vercel
