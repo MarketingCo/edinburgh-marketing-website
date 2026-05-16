@@ -23,9 +23,9 @@ const { Content } = await render(post);
 					Back to Blog
 				</a>
 				<div class="flex items-center space-x-4 mb-8">
-					<span class="text-xs font-bold text-[#6B4C9A] uppercase tracking-[0.2em]">{post.data.pubDate.toLocaleDateString('en-gb', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+					<span class="text-xs font-medium text-[#6B4C9A]">{post.data.pubDate.toLocaleDateString('en-gb', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
 					<span class="w-1 h-1 bg-gray-300 rounded-full"></span>
-					<span class="text-xs font-bold text-gray-400 uppercase tracking-[0.2em]">{post.data.author}</span>
+					<span class="text-xs font-medium text-gray-400">{post.data.author}</span>
 				</div>
 				<h1 class="text-5xl lg:text-6xl font-black text-[#0A192F] mb-8 leading-tight">{post.data.title}</h1>
 				<p class="text-xl text-gray-500 italic leading-relaxed">{post.data.description}</p>

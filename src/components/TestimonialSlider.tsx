@@ -62,7 +62,7 @@ export default function TestimonialSlider() {
               </p>
               <div>
                 <span className="text-xl font-black text-[#6B4C9A] block mb-1">{item.author}</span>
-                <span className="text-sm font-bold text-purple-100/40 uppercase tracking-widest">{item.role} | {item.location}</span>
+                <span className="text-sm font-medium text-purple-100/40">{item.role} | {item.location}</span>
               </div>
             </div>
           ))}

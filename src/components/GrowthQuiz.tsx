@@ -47,8 +47,7 @@ export default function GrowthQuiz() {
       <div className="relative z-10">
         {!isComplete ? (
           <div className="animate-in fade-in slide-in-from-right-4 duration-500">
-            <span className="text-xs font-black text-[#6B4C9A] uppercase tracking-[0.3em] mb-4 block">Question {currentStep + 1} of {steps.length}</span>
-            <h3 className="text-3xl lg:text-4xl font-black text-[#0A192F] mb-10 leading-tight">{steps[currentStep].question}</h3>
+                        <h3 className="text-3xl lg:text-4xl font-black text-[#0A192F] mb-10 leading-tight">{steps[currentStep].question}</h3>
             
             <div className="grid grid-cols-1 gap-4">
               {steps[currentStep].options.map((option, index) => (
@@ -73,12 +72,12 @@ export default function GrowthQuiz() {
               Based on your revenue and Edinburgh growth goals, your business is a high-potential candidate for our <strong>Growth Engine Partnership.</strong>
             </p>
             <div class="bg-slate-50 p-8 rounded-3xl mb-10 border border-gray-100">
-              <p class="text-sm font-bold text-[#0A192F] uppercase tracking-widest mb-4">Recommended Next Step:</p>
+              <p class="text-sm font-medium text-[#0A192F] mb-4">Recommended Next Step:</p>
               <a href="/contact" class="bg-[#0A192F] text-white px-10 py-5 rounded-2xl font-black text-lg hover:bg-[#1A2E4C] transition-all inline-block w-full shadow-xl">
                 Request Private Briefing
               </a>
             </div>
-            <button onClick={() => {setCurrentStep(0); setAnswers([]); setIsComplete(false);}} className="text-gray-400 font-bold hover:text-[#6B4C9A] transition-colors text-sm uppercase tracking-widest">
+            <button onClick={() => {setCurrentStep(0); setAnswers([]); setIsComplete(false);}} className="text-gray-400 font-medium hover:text-[#6B4C9A] transition-colors text-sm">
               Restart Quiz
             </button>
           </div>

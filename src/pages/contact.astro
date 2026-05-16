@@ -7,7 +7,7 @@ import Layout from '../layouts/Layout.astro';
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
 				<div>
-					<h2 class="text-sm font-black text-[#6B4C9A] uppercase tracking-[0.2em] mb-6">Get In Touch</h2>
+					<hr class="w-16 border-t-2 border-[#6B4C9A] mb-6" />
 					<h1 class="text-5xl lg:text-7xl font-extrabold text-[#0A192F] leading-tight mb-8">
 						Let's Build Your <span class="text-[#6B4C9A]">Success Story.</span>
 					</h1>
@@ -43,17 +43,17 @@ import Layout from '../layouts/Layout.astro';
 					<form class="space-y-8 relative z-10">
 						<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 							<div class="space-y-2">
-								<label class="text-xs font-black text-[#6B4C9A] uppercase tracking-[0.2em]">Your Name</label>
+								<label class="text-xs font-medium text-[#6B4C9A]">Your Name</label>
 								<input type="text" required placeholder="John Smith" class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-transparent focus:border-[#6B4C9A] focus:bg-white focus:ring-0 transition-all font-bold text-[#0A192F]" />
 							</div>
 							<div class="space-y-2">
-								<label class="text-xs font-black text-[#6B4C9A] uppercase tracking-[0.2em]">Work Email</label>
+								<label class="text-xs font-medium text-[#6B4C9A]">Work Email</label>
 								<input type="email" required placeholder="john@company.com" class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-transparent focus:border-[#6B4C9A] focus:bg-white focus:ring-0 transition-all font-bold text-[#0A192F]" />
 							</div>
 						</div>
 						<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 							<div class="space-y-2">
-								<label class="text-xs font-black text-[#6B4C9A] uppercase tracking-[0.2em]">Annual Revenue</label>
+								<label class="text-xs font-medium text-[#6B4C9A]">Annual Revenue</label>
 								<select required class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-transparent focus:border-[#6B4C9A] focus:bg-white focus:ring-0 transition-all font-bold text-[#0A192F]">
 									<option value="">Select Range</option>
 									<option value="under-250k">Under £250k</option>
@@ -63,7 +63,7 @@ import Layout from '../layouts/Layout.astro';
 								</select>
 							</div>
 							<div class="space-y-2">
-								<label class="text-xs font-black text-[#6B4C9A] uppercase tracking-[0.2em]">Monthly Budget</label>
+								<label class="text-xs font-medium text-[#6B4C9A]">Monthly Budget</label>
 								<select required class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-transparent focus:border-[#6B4C9A] focus:bg-white focus:ring-0 transition-all font-bold text-[#0A192F]">
 									<option value="">Select Budget</option>
 									<option value="under-1k">Under £1,000</option>
@@ -74,11 +74,11 @@ import Layout from '../layouts/Layout.astro';
 							</div>
 						</div>
 						<div class="space-y-2">
-							<label class="text-xs font-black text-[#6B4C9A] uppercase tracking-[0.2em]">Your Website</label>
+							<label class="text-xs font-medium text-[#6B4C9A]">Your Website</label>
 							<input type="url" required placeholder="www.yourcompany.co.uk" class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-transparent focus:border-[#6B4C9A] focus:bg-white focus:ring-0 transition-all font-bold text-[#0A192F]" />
 						</div>
 						<div class="space-y-2">
-							<label class="text-xs font-black text-[#6B4C9A] uppercase tracking-[0.2em]">Current Growth Challenge</label>
+							<label class="text-xs font-medium text-[#6B4C9A]">Current Growth Challenge</label>
 							<textarea rows="4" placeholder="Briefly describe what is holding your Edinburgh business back..." class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-transparent focus:border-[#6B4C9A] focus:bg-white focus:ring-0 transition-all font-bold text-[#0A192F] resize-none"></textarea>
 						</div>
 						<button type="submit" class="w-full bg-[#0A192F] text-white py-6 rounded-2xl font-black text-xl hover:bg-[#1A2E4C] transition-all transform hover:scale-[1.02] shadow-xl shadow-[#0A192F]/20">
@@ -97,7 +97,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="w-20 h-20 bg-[#6B4C9A] rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl animate-bounce">
 					<svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
 				</div>
-				<span class="text-sm font-black text-[#0A192F] uppercase tracking-[0.3em]">Visit us in the heart of Edinburgh</span>
+				<span class="text-sm font-medium text-[#0A192F]">Visit us in the heart of Edinburgh</span>
 			</div>
 		</div>
 		<!-- Mock Map Pattern -->

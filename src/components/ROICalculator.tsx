@@ -23,7 +23,7 @@ export default function ROICalculator() {
         <div className="space-y-8">
           <div>
             <div className="flex justify-between mb-4">
-              <label className="text-xs font-black text-gray-400 uppercase tracking-widest">Monthly Traffic</label>
+              <label className="text-xs font-medium text-gray-400">Monthly Traffic</label>
               <span className="text-sm font-bold text-[#0A192F]">{traffic.toLocaleString()} visitors</span>
             </div>
             <input 
@@ -35,7 +35,7 @@ export default function ROICalculator() {
 
           <div>
             <div className="flex justify-between mb-4">
-              <label className="text-xs font-black text-gray-400 uppercase tracking-widest">Avg. Order Value</label>
+              <label className="text-xs font-medium text-gray-400">Avg. Order Value</label>
               <span className="text-sm font-bold text-[#0A192F]">£{revenue.toLocaleString()}</span>
             </div>
             <input 
@@ -46,11 +46,10 @@ export default function ROICalculator() {
           </div>
 
           <div className="pt-8 border-t border-gray-50 flex flex-col items-center justify-center text-center">
-            <span className="text-xs font-black text-[#6B4C9A] uppercase tracking-[0.3em] mb-4">Potential Annual Growth</span>
-            <div className="text-5xl lg:text-6xl font-black text-[#0A192F] tracking-tighter mb-4">
+                        <div className="text-5xl lg:text-6xl font-black text-[#0A192F] tracking-tighter mb-4">
               £{roi.toLocaleString()}
             </div>
-            <p className="text-xs text-gray-400 font-bold uppercase tracking-widest max-w-[200px]">
+            <p className="text-xs text-gray-400 font-medium max-w-[200px]">
               Estimated impact of our 12-month strategy
             </p>
           </div>

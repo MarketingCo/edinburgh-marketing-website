@@ -11,7 +11,7 @@ const posts = (await getCollection('blog')).sort(
 	<section class="py-32 bg-slate-50">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="text-center mb-24">
-				<h2 class="text-sm font-black text-[#6B4C9A] uppercase tracking-[0.2em] mb-4">Our Blog</h2>
+				<hr class="w-16 border-t-2 border-[#6B4C9A] mb-4 mx-auto" />
 				<h1 class="text-5xl lg:text-7xl font-extrabold text-[#0A192F] mb-6">Marketing Insights for <span class="text-[#6B4C9A]">Edinburgh.</span></h1>
 				<p class="text-xl text-gray-500 max-w-2xl mx-auto">Expert strategies and local advice to help your business thrive in the Scottish capital.</p>
 			</div>
@@ -28,9 +28,9 @@ const posts = (await getCollection('blog')).sort(
 						</div>
 						<div class="p-10 flex flex-col flex-grow">
 							<div class="flex items-center space-x-4 mb-6">
-								<span class="text-xs font-bold text-[#6B4C9A] uppercase tracking-widest">{post.data.pubDate.toLocaleDateString('en-gb', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+								<span class="text-xs font-medium text-[#6B4C9A]">{post.data.pubDate.toLocaleDateString('en-gb', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
 								<span class="w-1 h-1 bg-gray-300 rounded-full"></span>
-								<span class="text-xs font-bold text-gray-400 uppercase tracking-widest">5 min read</span>
+								<span class="text-xs font-medium text-gray-400">5 min read</span>
 							</div>
 							<h2 class="text-2xl font-bold text-[#0A192F] mb-4 group-hover:text-[#6B4C9A] transition-colors">{post.data.title}</h2>
 							<p class="text-gray-500 mb-8 flex-grow leading-relaxed">{post.data.description}</p>

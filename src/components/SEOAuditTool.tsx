@@ -23,8 +23,7 @@ export default function SEOAuditTool() {
       <div className="absolute -top-20 -right-20 w-96 h-96 bg-[#6B4C9A] rounded-full filter blur-[120px] opacity-10"></div>
       
       <div className="relative z-10 max-w-2xl mx-auto text-center">
-        <span className="text-xs font-black text-purple-400 uppercase tracking-[0.4em] mb-6 block">Free Intelligence Tool</span>
-        <h3 className="text-3xl lg:text-5xl font-black text-white mb-8 leading-tight">Instant Edinburgh <br/><span class="text-[#6B4C9A]">SEO Analysis.</span></h3>
+                <h3 className="text-3xl lg:text-5xl font-black text-white mb-8 leading-tight">Instant Edinburgh <br/><span class="text-[#6B4C9A]">SEO Analysis.</span></h3>
         
         {status === 'idle' && (
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
@@ -42,22 +41,22 @@ export default function SEOAuditTool() {
         {status === 'scanning' && (
           <div className="py-12 flex flex-col items-center">
             <div className="w-16 h-16 border-4 border-purple-500/20 border-t-purple-500 rounded-full animate-spin mb-6"></div>
-            <p className="text-purple-100/60 font-black uppercase tracking-widest text-sm animate-pulse">Analyzing Edinburgh SERPs & Technical Health...</p>
+            <p className="text-purple-100/60 font-medium text-sm animate-pulse">Analyzing Edinburgh SERPs & Technical Health...</p>
           </div>
         )}
 
         {status === 'complete' && (
           <div className="py-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <div className="text-sm font-black text-green-400 uppercase tracking-widest mb-4">Scan Complete for {url}</div>
+            <div className="text-sm font-medium text-green-400 mb-4">Scan Complete for {url}</div>
             <div className="flex items-center justify-center space-x-8 mb-10">
               <div className="text-center">
                 <span class="text-6xl font-black text-white block">{score}/100</span>
-                <span class="text-xs font-black text-gray-400 uppercase tracking-widest mt-2 block">Current SEO Score</span>
+                <span className="text-xs font-medium text-gray-400 mt-2 block">Current SEO Score</span>
               </div>
               <div class="w-px h-16 bg-white/10"></div>
               <div className="text-center">
                 <span class="text-6xl font-black text-[#6B4C9A] block">Critical</span>
-                <span class="text-xs font-black text-gray-400 uppercase tracking-widest mt-2 block">Market Opportunity</span>
+                <span className="text-xs font-medium text-gray-400 mt-2 block">Market Opportunity</span>
               </div>
             </div>
             <p className="text-purple-100/60 mb-10 text-lg leading-relaxed">
@@ -74,7 +73,7 @@ export default function SEOAuditTool() {
           </div>
         )}
 
-        <p className="mt-8 text-[10px] text-white/30 font-bold uppercase tracking-[0.2em]">Used by 500+ local businesses this month</p>
+        <p className="mt-8 text-xs text-white/30 font-medium">Used by 500+ local businesses this month</p>
       </div>
     </div>
   );

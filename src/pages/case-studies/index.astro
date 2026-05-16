@@ -11,7 +11,7 @@ const caseStudies = (await getCollection('case-studies')).sort(
 	<section class="py-32 bg-slate-50">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="text-center mb-24">
-				<h2 class="text-sm font-black text-[#6B4C9A] uppercase tracking-[0.2em] mb-4">Our Portfolio</h2>
+				<hr class="w-16 border-t-2 border-[#6B4C9A] mb-4 mx-auto" />
 				<h1 class="text-5xl lg:text-7xl font-extrabold text-[#0A192F] mb-6">Edinburgh <span class="text-[#6B4C9A]">Success Stories.</span></h1>
 				<p class="text-xl text-gray-500 max-w-2xl mx-auto">From artisanal bakeries to high-end law firms, we deliver consistent, measurable growth in the capital.</p>
 			</div>
@@ -26,9 +26,9 @@ const caseStudies = (await getCollection('case-studies')).sort(
 						</div>
 						<div class="relative z-10">
 							<div class="flex items-center space-x-4 mb-8">
-								<span class="px-4 py-1.5 bg-purple-50 text-[#6B4C9A] text-xs font-black uppercase tracking-widest rounded-full">{study.data.industry}</span>
+								<span class="px-4 py-1.5 bg-purple-50 text-[#6B4C9A] text-xs font-medium rounded-full">{study.data.industry}</span>
 								<span class="text-gray-300 text-xs font-black">/</span>
-								<span class="text-gray-400 text-xs font-black uppercase tracking-widest">{study.data.pubDate.getFullYear()}</span>
+								<span class="text-gray-400 text-xs font-medium">{study.data.pubDate.getFullYear()}</span>
 							</div>
 							<h3 class="text-4xl font-black text-[#0A192F] mb-6 leading-tight group-hover:text-[#6B4C9A] transition-colors">{study.data.client}</h3>
 							<p class="text-xl text-gray-500 mb-10 leading-relaxed italic">"{study.data.description}"</p>
@@ -36,11 +36,11 @@ const caseStudies = (await getCollection('case-studies')).sort(
 							<div class="grid grid-cols-2 gap-8 mb-12 py-8 border-y border-gray-100">
 								<div>
 									<span class="text-4xl font-black text-[#0A192F] block mb-1">{study.data.results}</span>
-									<span class="text-gray-400 text-xs font-black uppercase tracking-widest">Growth Achieved</span>
+									<span class="text-gray-400 text-xs font-medium">Growth Achieved</span>
 								</div>
 								<div>
 									<span class="text-4xl font-black text-[#0A192F] block mb-1">6 Months</span>
-									<span class="text-gray-400 text-xs font-black uppercase tracking-widest">Timeframe</span>
+									<span class="text-gray-400 text-xs font-medium">Timeframe</span>
 								</div>
 							</div>
 							
